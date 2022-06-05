@@ -5,9 +5,10 @@
 npm init
 npm install express --save
 npm install cors --save
--> create .gitignore file and put "npm_modules"(no quotes) on top line
+-> create file .gitignore and put "npm_modules"(no quotes) on top line
+-> create index.html (example below)
 -> create server.js (example below)
-node server.js (to make sure it works)
+node server.js (to make sure it works locally: http://localhost:8000)
 
 /* github setup */
 -> create new repo on github
@@ -21,12 +22,35 @@ git push -u origin main
 /* heroku setup */
 npm install -g heroku
 heroku login 
-heroku create tea-api-herokutest (creates https://tea-api-herokutest.herokuapp.com/)
--> create Procfile and put "web: node server.js"(no quotes) on top line so heroku knows how to start
+heroku create tea-api-herokutest (needs to be unique; this example would create https://tea-api-herokutest.herokuapp.com/)
+-> create file Procfile and put "web: node server.js"(no quotes) on top line so heroku knows how to start
 git add .
 git commit -m "added procfile for heroku"
 git push heroku main
+-> go to created site (for example: https://tea-api-herokutest.herokuapp.com/)
 
+
+
+/***********************************
+        index.html example
+************************************/
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Time API</title>
+</head>
+
+<body>
+    <h1>Tea Time API</h1>
+    <p>To view API, use <a href="/api">/api</a></p>
+    <p>To search API, use <a href="/api/oolong">/api/oolong</a> (replace oolong to search for others)</p>
+</body>
+
+</html>
 
 
 /***********************************
