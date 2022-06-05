@@ -38,12 +38,14 @@ app.get("/", (request, response) => {
 
 app.get("/api/:name", (request, response) => {
     const teaName = (request.params.name).toLowerCase()
-    console.log(teaName)
+    console.log(`searching for: ${teaName}`)
 
     if (tea[teaName]) {
         response.json(tea[teaName])
+        console.log(tea[teaName])
     } else {
         response.json(tea['unknown'])
+        console.log(tea['unknown'])
     }
 })
 
@@ -53,4 +55,5 @@ app.get("/api", (request, response) => {
 
 app.listen(process.env.PORT || PORT, () => { //process.env.PORT allows you to use heroku's port number
     console.log(`listening on port ${PORT}: http://localhost:${PORT}`)
+    console.log(`search api using pattern: http://localhost:${PORT}/api/oolong`)
 })

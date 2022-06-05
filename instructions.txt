@@ -1,21 +1,93 @@
-/* Get set up locally */
+/***********************************
+   Terminal Commands / File setup
+************************************/
+/* local setup */
 npm init
 npm install express --save
-create .gitignore file and put "npm_modules"(no quotes) on top line 
+npm install cors --save
+-> create .gitignore file and put "npm_modules"(no quotes) on top line
+-> create server.js (example below)
+node server.js (to make sure it works)
 
-/* Get set up on github */
+/* github setup */
+-> create new repo on github
 git init
 git add .
 git commit -m "working api"
 git branch -M main
-git remote add origin [url]
+git remote add origin [repo url]
 git push -u origin main
 
-/* Get set up on heroku */
+/* heroku setup */
 npm install -g heroku
 heroku login 
-heroku create tea-api-100devs (unique name) -> creates https://[uniquename].herokuapp.com/
-echo "web: node server.js" > Procfile (create file called Procfile with this line at top so heroku knows how to start this)
+heroku create tea-api-herokutest (creates https://tea-api-herokutest.herokuapp.com/)
+-> create Procfile and put "web: node server.js"(no quotes) on top line so heroku knows how to start
 git add .
 git commit -m "added procfile for heroku"
 git push heroku main
+
+
+
+/***********************************
+        server.js example
+************************************/
+const express = require('express')
+const app = express()
+const cors = require('cors') 
+app.use(cors())
+const PORT = 8000
+
+const tea = {
+    "oolong": {
+        "type": "black",
+        "origin": "China",
+        "waterTempF": 200,
+        "steepTimeSecond": 180,
+        "caffinated": true,
+        "desc": "a traditional semi-oxidized Chinese tea produced through a process including withering the plant under strong sun and oxidation before curling and twisting"
+    },
+    "genmaicha": {
+        "type": "green",
+        "origin": "Japan",
+        "waterTempF": 180,
+        "steepTimeSecond": 240,
+        "caffinated": true,
+        "desc": "a Japanese brown rice green tea consisting of green tea mixed with roasted popped brown rice"
+    },
+    "unknown": {
+        "type": "unknown",
+        "origin": "unknown",
+        "waterTempF": 0,
+        "steepTimeSecond": 0,
+        "caffinated": false,
+        "desc": "unknown"
+    }
+}
+
+app.get("/", (request, response) => {
+    console.log("sending you to index.html")
+    response.sendFile(`${__dirname}/index.html`)
+})
+
+app.get("/api/:name", (request, response) => {
+    const teaName = (request.params.name).toLowerCase()
+    console.log(`searching for: ${teaName}`)
+
+    if (tea[teaName]) {
+        response.json(tea[teaName])
+        console.log(tea[teaName])
+    } else {
+        response.json(tea['unknown'])
+        console.log(tea['unknown'])
+    }
+})
+
+app.get("/api", (request, response) => {
+    response.json(tea)
+})
+
+app.listen(process.env.PORT || PORT, () => { //process.env.PORT allows you to use heroku's port number
+    console.log(`listening on port ${PORT}: http://localhost:${PORT}`)
+    console.log(`search api using pattern: http://localhost:${PORT}/api/oolong`)
+})
