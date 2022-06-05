@@ -11,15 +11,15 @@ const tea = {
         "waterTempF": 200,
         "steepTimeSecond": 180,
         "caffinated": true,
-        "flavor": "delicious"
+        "desc": "a traditional semi-oxidized Chinese tea produced through a process including withering the plant under strong sun and oxidation before curling and twisting"
     },
-    "matcha": {
+    "genmaicha": {
         "type": "green",
-        "origin": "yo mamas house",
-        "waterTempF": 200,
-        "steepTimeSecond": 180,
+        "origin": "Japan",
+        "waterTempF": 180,
+        "steepTimeSecond": 240,
         "caffinated": true,
-        "flavor": "delicious"
+        "desc": "a Japanese brown rice green tea consisting of green tea mixed with roasted popped brown rice"
     },
     "unknown": {
         "type": "unknown",
@@ -27,7 +27,7 @@ const tea = {
         "waterTempF": 0,
         "steepTimeSecond": 0,
         "caffinated": false,
-        "flavor": "unknown"
+        "desc": "unknown"
     }
 }
 

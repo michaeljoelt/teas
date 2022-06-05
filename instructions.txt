@@ -1,7 +1,9 @@
+/* Get set up locally */
 npm init
 npm install express --save
 create .gitignore file and put "npm_modules"(no quotes) on top line 
 
+/* Get set up on github */
 git init
 git add .
 git commit -m "working api"
@@ -9,10 +11,11 @@ git branch -M main
 git remote add origin [url]
 git push -u origin main
 
+/* Get set up on heroku */
 npm install -g heroku
 heroku login 
 heroku create tea-api-100devs (unique name) -> creates https://[uniquename].herokuapp.com/
 echo "web: node server.js" > Procfile (create file called Procfile with this line at top so heroku knows how to start this)
 git add .
-git commit -m "added procfile for heroku working"
+git commit -m "added procfile for heroku"
 git push heroku main
