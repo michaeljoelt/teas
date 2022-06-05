@@ -8,3 +8,10 @@ git commit -m "working api"
 git branch -M main
 git remote add origin [url]
 git push -u origin main
+
+heroku login (flag for authentication?)
+heroku create tea-api-100devs (unique name) -> creates https://[uniquename].herokuapp.com/
+echo "web: node server.js" > Procfile (create file called Procfile with this line at top)
+git add .
+git commit -m "added procfile for heroku working"
+git push heroku main

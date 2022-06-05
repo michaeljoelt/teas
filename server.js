@@ -1,11 +1,13 @@
 const express = require('express')
 const app = express()
+const cors = require('cors') //allows requests from external clients
+app.use(cors())
 const PORT = 8000
 
 const tea = {
     "oolong": {
         "type": "black",
-        "origin": "yo mamas house",
+        "origin": "China",
         "waterTempF": 200,
         "steepTimeSecond": 180,
         "caffinated": true,
