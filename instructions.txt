@@ -1,0 +1,10 @@
+npm init
+npm install express --save
+create .gitignore file and put "npm_modules"(no quotes) on top line 
+
+git init
+git add .
+git commit -m "working api"
+git branch -M main
+git remote add origin [url]
+git push -u origin main
