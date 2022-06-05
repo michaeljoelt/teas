@@ -54,6 +54,6 @@ app.get("/api", (request, response) => {
 })
 
 app.listen(process.env.PORT || PORT, () => { //process.env.PORT allows you to use heroku's port number
-    console.log(`listening on port ${PORT}: http://localhost:${PORT}`)
-    console.log(`search api using pattern: http://localhost:${PORT}/api/oolong`)
+    console.log(`listening on port ${PORT}`)
+    console.log(`search api using pattern: /api/oolong (replace oolong with search term)`)
 })
